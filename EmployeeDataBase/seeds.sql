@@ -36,7 +36,14 @@ INSERT INTO  employee (first_name , last_name, role_ID, manager_ID)
     ('Robert','Hernedez',3,2),
     ('Anetta', 'Towns',4,3)
     ('Sofia', 'Lauren',5,1),
-    ('Jack','Black',8,1),
-    ('Tori', 'Jones',11,1),
-
+    ('Jack','Black',6,5),
+    ('Tori', 'Jones',7,6),
+    ('Geffory','Scott',8,1),
+    ('Harry','Howard',9,8),
+    ('Lynn', 'Christenson',10,9),
+    ('Susan','Hsu',11,1),
+    ('Hasan','Jackson',12,11),
+    ('George','Fredrick',13,12),
+    ('Sara','Evans',14,12),
+    ('Taylor','Maxton',14,12)
 ;
