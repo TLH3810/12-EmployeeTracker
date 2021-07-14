@@ -3,24 +3,24 @@ CREATE DATABASE employee_db;
 USE employee_db;
 
 CREATE TABLE department(
-    department_Id INTEGER() NOT NULL,
+    department_Id INT NOT NULL,
     department_Name VARCHAR (100),
-    PRIMARY KEY (departmentId)
+    PRIMARY KEY (department_Id)
 );
 
 CREATE TABLE employeeRole (
-    roleId INTEGER() NOT NULL,
+    role_Id INT NOT NULL,
     title VARCHAR (30),
     salary DECIMAL (8) NOT NULL,
-    department_Id INTEGER ()NOT NULL,
-    PRIMARY KEY (roleId)
+    department_Id INT NOT NULL,
+    PRIMARY KEY (role_Id)
 );
 
 CREATE TABLE employee (
-    employee_Id INTEGER() NOT NULL,
+    employee_Id INT NOT NULL,
     first_Name VARCHAR (30)NOT NULL,
     last_Name VARCHAR (30)NOT NULL,
-    role_Id INTEGER() NOT NULL,
-    manager_Id INTEGER(),
+    role_Id INT NOT NULL,
+    manager_Id INT,
      PRIMARY KEY (employee_Id)
 );

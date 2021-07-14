@@ -1,0 +1,25 @@
+{
+  "name": "12-employeetracker",
+  "version": "1.0.0",
+  "description": "A application to manage departments, roles and employees in the business.",
+  "main": "MainPromptsIndex.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TLH3810/12-EmployeeTracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TLH3810/12-EmployeeTracker/issues"
+  },
+  "homepage": "https://github.com/TLH3810/12-EmployeeTracker#readme",
+  "dependencies": {
+    "inquirer": "^8.1.1",
+    "mysql": "^2.18.1",
+    "start": "^5.1.0"
+  }
+}
