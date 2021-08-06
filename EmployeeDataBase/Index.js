@@ -64,7 +64,7 @@ class empDbQ {
                 type: "input",
                 name:"managerId"
             },
-            );
+            )
             .then(answer){
                 var fname = answer.firstName;
                 var lname = answer.lastName;
