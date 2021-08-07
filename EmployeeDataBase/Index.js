@@ -76,8 +76,34 @@ class empDbQ {
         });
 
     
-    insertAddDepartment(){}
-    insertAddRole(){}
+    insertAddDepartment(){
+        inquirer.prompt(
+            {
+            message: "Please enter the Department Name",
+            type: "input",
+            name:"departmentName"
+        },
+    }
+    insertAddRole(){
+        inquirer.prompt(
+            {
+                message: "Please enter the role title",
+                type: "input",
+                name:"roleName"
+            },
+            {
+                message: "Please enter the salary",
+                type:"input",
+                name: "salaryAmt"
+            },
+            {
+                message: "Please enter department number",
+                type: "input",
+                name: "roleDeptId"
+            }
+
+        )
+    }
 
 //Update employee roles
     updateEmployeeRoll(){}
