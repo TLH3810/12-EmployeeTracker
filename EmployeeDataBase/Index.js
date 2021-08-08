@@ -1,6 +1,5 @@
 const inquirer = require("inquirer");
 
-
 class empDbQ {
     constructor(connection) {
         this.connection = connection;
@@ -8,7 +7,7 @@ class empDbQ {
 
     //View departments, 
     selectAllDepartments() {
-        this.connection.query("SELECT * FROM departments", (err, results) => {
+        this.connection.query("SELECT * FROM department", (err, results) => {
             if (err) {
                 console.log(error);
             } else {
@@ -29,84 +28,112 @@ class empDbQ {
     }
 
     //View employees
-    selectAllEmployees(){
+    selectAllEmployees() {
         this.connection.query('SELECT * FROM employee', (err, results) => {
             if (err) {
                 console.log(error);
             } else {
                 console.log(results)
-            }  
+            }
         });
     }
 
 
     //Add departments, roles, employees
-    insertAddEmployee(){
-
-            inquirer.prompt(
-                {
+    insertAddEmployee() {
+        inquirer.prompt(
+            [{
                 message: "Please enter the Employee First Name ",
                 type: "input",
-                name:"firstName"
+                name: "firstName"
             },
             {
                 message: "Please enter the Employee Last Name ",
                 type: "input",
-                name:"lastName"
+                name: "lastName"
             },
             {
                 message: "Please enter the Employee Role ID ",
                 type: "input",
-                name:"roleId"
+                name: "roleId"
             },
             {
                 message: "Please enter the Employee Manager ID ",
                 type: "input",
-                name:"managerId"
-            },
-            )
-            .then(answer){
-                var fname = answer.firstName;
-                var lname = answer.lastName;
-                var roleId = answer.roleId;
-                var mgid = answer.managerId;
-                this.connection.query('INSERT INTO employee SET ?',[{first_name:fname,last_name:lname,role_Id:roleId,manager_Id:mgid}]);    
-            }
-             
+                name: "managerId"
+            }]
+        )
+            .then((answer)=>{
+            var fname = answer.firstName;
+            var lname = answer.lastName;
+            var roleId = answer.roleId;
+            var mgid = answer.managerId;
+            this.connection.query('INSERT INTO employee SET ?', [{ first_name: fname, last_name: lname, role_Id: roleId, manager_Id: mgid }]);
         });
 
-    
-    insertAddDepartment(){
-        inquirer.prompt(
-            {
-            message: "Please enter the Department Name",
-            type: "input",
-            name:"departmentName"
-        },
     }
-    insertAddRole(){
+
+
+    insertAddDepartment() {
         inquirer.prompt(
             {
+                message: "Please enter the Department Name",
+                type: "input",
+                name: "departmentName"
+            },
+            )
+            .then((answer) => {
+                var dptName = answer.departmentName;
+                this.connection.query('INSERT INTO department SET ?',[{department_Name: dptName}]);
+            });
+    }
+
+    insertAddRole() {
+        inquirer.prompt(
+            [{
                 message: "Please enter the role title",
                 type: "input",
-                name:"roleName"
+                name: "roleName"
             },
             {
                 message: "Please enter the salary",
-                type:"input",
+                type: "input",
                 name: "salaryAmt"
             },
             {
                 message: "Please enter department number",
                 type: "input",
                 name: "roleDeptId"
-            }
-
+            }]
         )
+            .then((answer) => {
+                var rlName = answer.roleName;
+                var salAmt = answer.salaryAmt;
+                var rDptId = answer.roleDeptId;
+                this.connection.query('INSERT INTO employeeRole SET ?', [{title: rlName,salery:salAmt,department_Id:rDptId}]);
+            });
     }
 
-//Update employee roles
-    updateEmployeeRoll(){}
+    //Update employee roles
+    updateEmployeeRoll() {
+        inquirer.prompt(
+            [{
+                message: "Please enter the employee ID",
+                type: "input",
+                name: "inptEmpId"
+
+            },
+            {
+                message: "Please enter the new role ID",
+                type: "input",
+                name: "updateRoleId" 
+            }])
+        .this((answer) => {
+            var empId = answer.inptEmpId;
+            var updtRlId = answer.updateRoleId;
+            this.connection.query('UPDATE employee SET role id = ? WHERE employee id =?',[{role_Id:updtRlId, employee_Id:empId}])
+        });
+    }
 
 
 };

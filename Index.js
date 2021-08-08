@@ -15,6 +15,9 @@ function loadQuestionPrompt() {
                 'Find All Employees Roles',
                 'Find All Employees',
                 'Find All Departments',
+                'Add a New Employee',
+                'Add a New Role',
+                'Update an Employee Role'
 
             ],
         })
@@ -32,6 +35,9 @@ function loadQuestionPrompt() {
                    break;
                 case 'Add a New Employee':
                     newDB.insertAddEmployee();
+                    break;
+                case 'Update an Employee Role':
+                    newDB.updateEmployeeRoll();
                     break;
                    
             }
