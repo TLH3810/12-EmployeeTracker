@@ -11,7 +11,7 @@ VALUES
 
 
 
-INSERT INTO employeeRole (title, salary, department_id)
+INSERT INTO employeeRole (title, salary, department_Id)
     VALUES
     ('CEO',300000,1),
     ('Director of Accounting', 20000,2),
@@ -30,7 +30,7 @@ INSERT INTO employeeRole (title, salary, department_id)
     ;
     
     
-INSERT INTO  employee (first_name , last_name, role_ID, manager_ID)
+INSERT INTO  employee (first_Name , last_Name, role_Id, manager_Id)
     VALUES
     ('John','Smith',1,NULL),
     ('Adrey', 'Hepburn',2,1),

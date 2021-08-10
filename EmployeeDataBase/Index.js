@@ -11,9 +11,9 @@ class empDbQ {
             if (err) {
                 console.log(error);
             } else {
-                console.log(results)
+                console.log(results);
             }
-        });
+            });
     }
 
     //View roles, 
@@ -110,7 +110,7 @@ class empDbQ {
                 var rlName = answer.roleName;
                 var salAmt = answer.salaryAmt;
                 var rDptId = answer.roleDeptId;
-                this.connection.query('INSERT INTO employeeRole SET ?', [{title: rlName,salery:salAmt,department_Id:rDptId}]);
+                this.connection.query('INSERT INTO employeeRole SET ?', [{title: rlName, salary:salAmt, department_Id:rDptId}]);
             });
     }
 
@@ -128,10 +128,10 @@ class empDbQ {
                 type: "input",
                 name: "updateRoleId" 
             }])
-        .this((answer) => {
+        .then((answer) => {
             var empId = answer.inptEmpId;
             var updtRlId = answer.updateRoleId;
-            this.connection.query('UPDATE employee SET role id = ? WHERE employee id =?',[{role_Id:updtRlId, employee_Id:empId}])
+            this.connection.query('UPDATE employee SET ? WHERE ?',[{role_Id: updtRlId}, {employee_Id: empId}])
         });
     }
 

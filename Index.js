@@ -16,6 +16,7 @@ function loadQuestionPrompt() {
                 'Find All Employees',
                 'Find All Departments',
                 'Add a New Employee',
+                'Add a New Department',
                 'Add a New Role',
                 'Update an Employee Role'
 
@@ -36,15 +37,25 @@ function loadQuestionPrompt() {
                 case 'Add a New Employee':
                     newDB.insertAddEmployee();
                     break;
+                case 'Add a New Department':
+                    newDB.insertAddDepartment();
+                    break;
+                case 'Add a New Role':
+                    newDB.insertAddRole();
+                    break;
                 case 'Update an Employee Role':
                     newDB.updateEmployeeRoll();
                     break;
                    
             }
            // return answer;
-        });
-       
-                
+        });     
 };
 
 loadQuestionPrompt();
+
+/* function quit() {
+    console.log("Goodbye!");
+    process.exit();
+  }
+  quit(); */
