@@ -49,10 +49,21 @@ function loadQuestionPrompt() {
                    
             }
            // return answer;
+        }) .then(() => {
+            console.log("data")
+            //loadQuestionPrompt();
         });     
 };
 
-loadQuestionPrompt();
+connection.connect((err) => {
+    if (err) throw err;
+
+    // Start main menu function
+
+    console.log("\n WELCOME TO EMPLOYEE TRACKER \n");
+    loadQuestionPrompt();
+});
+
 
 /* function quit() {
     console.log("Goodbye!");

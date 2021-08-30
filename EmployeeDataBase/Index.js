@@ -1,3 +1,4 @@
+const cTable = require('console.table');
 const inquirer = require("inquirer");
 
 class empDbQ {
@@ -11,19 +12,20 @@ class empDbQ {
             if (err) {
                 console.log(error);
             } else {
-                console.log(results);
+                console.table(results);
             }
             });
     }
 
     //View roles, 
-    selectAllEmpRoles() {
-        this.connection.query('SELECT * FROM employeeRole', (err, results) => {
+    async selectAllEmpRoles() {
+        await this.connection.query('SELECT * FROM employeeRole', (err, results) => {
             if (err) {
-                console.log(error);
+                console.log(err);
             } else {
-                console.log(results)
-            }
+                console.table(results);
+            
+          }
         });
     }
 
@@ -33,7 +35,7 @@ class empDbQ {
             if (err) {
                 console.log(error);
             } else {
-                console.log(results)
+                console.table(results);
             }
         });
     }
@@ -132,7 +134,9 @@ class empDbQ {
             var empId = answer.inptEmpId;
             var updtRlId = answer.updateRoleId;
             this.connection.query('UPDATE employee SET ? WHERE ?',[{role_Id: updtRlId}, {employee_Id: empId}])
-        });
+        }
+        
+        );
     }
 
 
