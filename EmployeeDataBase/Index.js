@@ -10,11 +10,11 @@ class empDbQ {
     selectAllDepartments() {
         this.connection.query("SELECT * FROM department", (err, results) => {
             if (err) {
-                console.log(error);
+                console.log(err);
             } else {
                 console.table(results);
             }
-            });
+        });
     }
 
     //View roles, 
@@ -24,16 +24,16 @@ class empDbQ {
                 console.log(err);
             } else {
                 console.table(results);
-            
-          }
-        });
-    }
+
+            }
+        })
+    };
 
     //View employees
     selectAllEmployees() {
         this.connection.query('SELECT * FROM employee', (err, results) => {
             if (err) {
-                console.log(error);
+                console.log(err);
             } else {
                 console.table(results);
             }
@@ -65,13 +65,13 @@ class empDbQ {
                 name: "managerId"
             }]
         )
-            .then((answer)=>{
-            var fname = answer.firstName;
-            var lname = answer.lastName;
-            var roleId = answer.roleId;
-            var mgid = answer.managerId;
-            this.connection.query('INSERT INTO employee SET ?', [{ first_name: fname, last_name: lname, role_Id: roleId, manager_Id: mgid }]);
-        });
+            .then((answer) => {
+                var fname = answer.firstName;
+                var lname = answer.lastName;
+                var roleId = answer.roleId;
+                var mgid = answer.managerId;
+                this.connection.query('INSERT INTO employee SET ?', [{ first_name: fname, last_name: lname, role_Id: roleId, manager_Id: mgid }]);
+            });
 
     }
 
@@ -83,10 +83,10 @@ class empDbQ {
                 type: "input",
                 name: "departmentName"
             },
-            )
+        )
             .then((answer) => {
                 var dptName = answer.departmentName;
-                this.connection.query('INSERT INTO department SET ?',[{department_Name: dptName}]);
+                this.connection.query('INSERT INTO department SET ?', [{ department_Name: dptName }]);
             });
     }
 
@@ -112,7 +112,7 @@ class empDbQ {
                 var rlName = answer.roleName;
                 var salAmt = answer.salaryAmt;
                 var rDptId = answer.roleDeptId;
-                this.connection.query('INSERT INTO employeeRole SET ?', [{title: rlName, salary:salAmt, department_Id:rDptId}]);
+                this.connection.query('INSERT INTO employeeRole SET ?', [{ title: rlName, salary: salAmt, department_Id: rDptId }]);
             });
     }
 
@@ -128,15 +128,15 @@ class empDbQ {
             {
                 message: "Please enter the new role ID",
                 type: "input",
-                name: "updateRoleId" 
+                name: "updateRoleId"
             }])
-        .then((answer) => {
-            var empId = answer.inptEmpId;
-            var updtRlId = answer.updateRoleId;
-            this.connection.query('UPDATE employee SET ? WHERE ?',[{role_Id: updtRlId}, {employee_Id: empId}])
-        }
-        
-        );
+            .then((answer) => {
+                var empId = answer.inptEmpId;
+                var updtRlId = answer.updateRoleId;
+                this.connection.query('UPDATE employee SET ? WHERE ?', [{ role_Id: updtRlId }, { employee_Id: empId }])
+            }
+
+            );
     }
 
 

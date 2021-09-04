@@ -4,7 +4,6 @@ const db = require("./EmployeeDataBase/Index");
 //const { inherits } = require("node:util");
 const connection = require("./EmployeeDataBase/employeeConnectDb");
 
-
 function loadQuestionPrompt() {
     inquirer
         .prompt({
@@ -54,12 +53,8 @@ function loadQuestionPrompt() {
             //loadQuestionPrompt();
         });     
 };
-
 connection.connect((err) => {
     if (err) throw err;
-
-    // Start main menu function
-
     console.log("\n WELCOME TO EMPLOYEE TRACKER \n");
     loadQuestionPrompt();
 });
